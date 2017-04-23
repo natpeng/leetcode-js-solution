@@ -1,13 +1,13 @@
 /** 
  * Problem description:
- *   https://leetcode.com/problems/combination-sum/#/description
+ *   https://leetcode.com/problems/combination-sum-ii/#/description
  */
  /**
  * @param {number[]} candidates
  * @param {number} target
  * @return {number[][]}
  */
-var combinationSum = function(candidates, target) {
+var combinationSum2 = function(candidates, target) {
     if(candidates.length == 0) return [];
 
     var ret = [];
@@ -32,7 +32,7 @@ var combinationSum = function(candidates, target) {
     	for(var i = start; i < candidates.length; i++) {
     		if(i > start && candidates[i] == candidates[i-1]) continue; // avoid repeatitive solution in same level, not in next level
     	    sub.push(candidates[i]);
-    		backtrack(candidates, i, sub, sum + candidates[i], ret);
+    		backtrack(candidates, i+1, sub, sum + candidates[i], ret);
     		sub.pop();
     	}
     }
