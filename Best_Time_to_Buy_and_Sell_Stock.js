@@ -23,3 +23,17 @@ var maxProfit = function(prices) {
     }
     return totalMax;
 };
+
+
+// Solution 2: better solution
+var maxProfit = function(prices) {
+    var hold = Number.MIN_SAFE_INTEGER; // -(2^53 - 1)
+    var release = 0; 
+    
+    prices.forEach(function(price){
+        release = Math.max(release, hold + price);
+        hold = Math.max(hold, -price);
+    });
+    
+    return release;
+};
